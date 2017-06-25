@@ -1,13 +1,18 @@
+/* pre defind tag */
+/* body */
 body{
     padding: 0px;
     margin: 0px;
 }
+/* header */
 header{
     width: 100%;
     display: flex;
     justify-content: center; 
     align-items: center; 
 }
+/* classes */
+/* the title in the header */
 .webName{
     width: 33.33%;
     font-size: 45px;
