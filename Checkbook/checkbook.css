@@ -25,8 +25,12 @@ footer{
     margin-top: 10px;
     margin-bottom: 10px; 
     width: 100%;
+    position: fixed
+}
+/* ids */
+/* total */
+#total{
     font-size: 25px;
     font-family: American Typewriter;
     text-align: center;
-    position: fixed
 }
