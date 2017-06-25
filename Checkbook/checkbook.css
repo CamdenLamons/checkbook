@@ -1,0 +1,19 @@
+body{
+    padding: 0px;
+    margin: 0px;
+}
+header{
+    width: 100%;
+    display: flex;
+    justify-content: center; 
+    align-items: center; 
+}
+.webName{
+    width: 33.33%;
+    font-size: 45px;
+    font-family: American Typewriter;
+    display: flex;
+    justify-content: center; 
+    align-items: center;
+    text-align: center;
+}
