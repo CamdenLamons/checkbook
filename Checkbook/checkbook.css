@@ -3,22 +3,23 @@
 body{
     padding: 0px;
     margin: 0px;
-}
-/* header */
-header{
-    width: 100%;
+    background: #d3d3d3;
     display: flex;
     justify-content: center; 
     align-items: center; 
 }
-/* classes */
-/* the title in the header */
-.webName{
-    width: 33.33%;
+/* header */
+header{
+    left: 0px;
+    margin-top: 10px;
+    width: 100%;
     font-size: 45px;
     font-family: American Typewriter;
-    display: flex;
-    justify-content: center; 
-    align-items: center;
     text-align: center;
+}
+/* line */
+hr{
+    margin-top: 10px;
+    width: 99%;
+    height: 1px;
 }
