@@ -7,3 +7,9 @@ function load(){
 function add(){
     document.getElementById("popUp").style.display = 'block';
 }
+function cancel(){
+    document.getElementById("popUp").style.display = 'none';
+}
+function submit(){
+    cancel();
+}
