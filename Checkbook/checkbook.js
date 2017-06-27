@@ -1,19 +1,25 @@
 // varablies
 
+// elements
+let totalElement = document.getElementById("total");
+let popUpElement = document.getElementById("popUp");
+let payeeElement = document.getElementById("Payee");
+let amountElement = document.getElementById("Amount")
+
 function load(){
-    document.getElementById("total").innerHTML = "Total: $0.00";
-    document.getElementById("popUp").style.display = 'none';
+    totalElement.innerHTML = "Total: $0.00";
+    popUpElement.style.display = 'none';
 }
 function add(){
-    document.getElementById("popUp").style.display = 'block';
+    popUpElement.style.display = 'block';
 }
 function cancel(){
-    document.getElementById("popUp").style.display = 'none';
+    popUpElement.style.display = 'none';
 }
 function submit(){
-    if ( document.getElementById("Payee").value != "" && document.getElementById("Payee").value != "Type Place Here"){
-        if ( Number(document.getElementById("Amount").value) ){
-            document.getElementById("total").innerHTML = document.getElementById("Amount").value;
+    if ( payeeElement.value != "" && payeeElement.value != "Type Place Here"){
+        if ( Number(amountElement.value) ){
+            totalElement.innerHTML = amountElement.value;
         }
     }
     cancel();
