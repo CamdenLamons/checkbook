@@ -67,6 +67,20 @@ footer{
     color: #ffffff;
     background: #808080;
 }
+#menuButton{
+    position: absolute;
+    top: 10px;
+    left: 2.5%;
+    width: 50px;
+    height: 50px;
+    border: none;
+    border-radius: 5px;
+    font-size: 40px;
+    text-align: center;
+    font-family: American Typewriter;
+    color: #ffffff;
+    background: #808080;
+}
 #popUp{
     width: 40%;
     padding: 10px;
@@ -138,7 +152,10 @@ footer{
     color: #000;
     background: #f5f5f5;
 }
-
+#menuButton:active{
+    color: #000;
+    background: #f5f5f5;
+}
 #wrongAnswerButton:active{
     color: #ffffff;
     background: #808080;

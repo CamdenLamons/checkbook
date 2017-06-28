@@ -15,6 +15,11 @@ function load(){
     popUpElement.style.display = 'none';
     wrongAnswerElement.style.display = 'none';
 }
+// function is called when click on the menu button
+// function displays the menu
+function menu(){
+    
+}
 // function is called when clicked on the add button
 // function makes the pop up apper
 function add(){
