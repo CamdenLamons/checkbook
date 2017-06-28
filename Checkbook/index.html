@@ -24,15 +24,34 @@
         <!-- pop up -->
         <!-- can change if have better idea -->
         <div id="popUp">
+            <!-- what it input -->
+            <!-- input the type of paying your doing -->
             Payee 
-            <input type="text" id="Payee" value="Type Place Here">
-            <br>
+            <!-- input box -->
+            <input type="text" id="payee" value="Type Place Here"><br>
+            <!-- what it input -->
+            <!-- input what amount is being add or subtacted -->
             Amount 
-            <input type="text" id="Amount" value="Type Number Here">
-            <br>
-            <button class="button" onclick="cancel()">Cancel</button>
-            <button class="button" onclick="submit()">Submit</button> 
-        </div> 
+            <!-- input box -->
+            <input type="text" id="amount" value="Type Number Here"><br>
+            <!-- cancel and submit buttons -->
+            <!-- call function when click on -->
+            <button class="popUpButton" onclick="cancel()">Cancel</button>
+            <button class="popUpButton" onclick="submit()">Submit</button> 
+        </div>
+        <!-- wrong answer pop up -->
+        <!-- displays what the user enter that was not right -->
+        <!-- change if pop up was change or if have a better idead -->
+        <div id="wrongAnswer">
+            <!-- text -->
+            <!-- tells the user that they enter something wrong -->
+            The information you have enter is wrong. 
+            You ether did not enter a payee or put a nonvalued number. 
+            Press the ok button to go back to the main screen.
+            <!-- ok button -->
+            <!-- call function when click on -->
+            <button id="wrongAnswerButton" onclick="ok()">Ok</button> 
+        </div>
         <!-- footer of the page -->
         <!-- add what you think needs to be in the footer -->
         <!-- this footer is not going to have lots of links it just going to have the total -->
