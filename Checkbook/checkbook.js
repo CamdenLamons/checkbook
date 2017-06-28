@@ -3,6 +3,7 @@ var totalMoney = 0.00;
 
 // elements
 let totalElement = document.getElementById("total");
+let menuElement = document.getElementById("menu");
 let popUpElement = document.getElementById("popUp");
 let payeeElement = document.getElementById("payee");
 let amountElement = document.getElementById("amount");
@@ -12,13 +13,19 @@ let wrongAnswerElement = document.getElementById("wrongAnswer");
 // function sets up everything up
 function load(){
     totalElement.innerHTML = "Total: $0.00";
+    menuElement.style.display = 'none';
     popUpElement.style.display = 'none';
     wrongAnswerElement.style.display = 'none';
 }
 // function is called when click on the menu button
 // function displays the menu
 function menu(){
-    
+    menuElement.style.display = 'block';
+}
+// function is called when click on the back button in the menu
+// function hides the menu
+function closed(){
+    menuElement.style.display = 'none';
 }
 // function is called when clicked on the add button
 // function makes the pop up apper
