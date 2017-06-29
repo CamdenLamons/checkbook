@@ -1,5 +1,9 @@
 // varablies
 var totalMoney = 0.00;
+if(!localStorage.savedMoney){
+    localStorage.setItem("savedMoney",0.00)
+}
+totalMoney = localStorage.savedMoney;
 
 // elements
 let totalElement = document.getElementById("total");
@@ -11,17 +15,16 @@ let wrongAnswerElement = document.getElementById("wrongAnswer");
 // function is called when screen loads
 // function sets up everything up
 function load(){
-    totalElement.innerHTML = "Total: $0.00";
+    totalElement.innerHTML = "Total: $" + String(totalMoney);
     popUpElement.style.display = 'none';
     wrongAnswerElement.style.display = 'none';
 }
-function click(){
-    popUpElement.style.display = 'block';
-}
-// function is called when click on the back button in the menu
-// function hides the menu
-function closed(){
-    menuElement.style.display = 'none';
+// function is called when clicked on the erace button
+// function resets everything
+function reset(){
+    localStorage.savedMoney = 0.00;
+    totalMoney = 0.00
+    totalElement.innerHTML = "Total: $" + String(totalMoney)
 }
 // function is called when clicked on the add button
 // function makes the pop up apper
@@ -42,6 +45,7 @@ function submit(){
         totalMoney_IndexOfDot = String(totalMoney).indexOf(".");
         totalMoney_Slice = String(totalMoney).slice(0,totalMoney_IndexOfDot+3);
         totalElement.innerHTML = "Total: $" + String(totalMoney_Slice);
+        localStorage.savedMoney = totalMoney;
     }
     else{
         cancel();
