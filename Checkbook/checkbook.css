@@ -46,17 +46,10 @@ footer{
     background: #ffffff;
 }
 #total{
+    width: 33.33%;
     font-size: 25px;
     text-align: center;
     font-family: American Typewriter;
-}
-#menu{
-    margin: 0px;
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background: #ffffff;
 }
 #popUp{
     width: 40%;
@@ -106,8 +99,27 @@ footer{
     color: #000;
     background: #d3d3d3;
 }
-.menuButtons{
+.menu{
+    margin: 0px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #ffffff;
+}
+.menuLinks{
     width: 25%;
+    border: none;
+    border-radius: 5px;
+    font-size: 17.5px;
+    text-align: center;
+    font-family: American Typewriter;
+    text-decoration: none;
+    color: #000;
+    background: #ffffff;
+}
+.menuButtons{
+    width: 33.33%;
     border: none;
     border-radius: 5px;
     font-size: 17.5px;
@@ -146,7 +158,6 @@ footer{
     color: #ffffff;
     background: #808080;
 }
-.menuButtons:active{
-    color: #ffffff;
-    background: #000000;
+.menuLinks:active, .menuButtons:active{
+    font-size: 22.5px;
 }
