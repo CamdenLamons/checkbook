@@ -45,6 +45,13 @@ footer{
     width: 100%;
     background: #ffffff;
 }
+#main{
+    position: relative;
+    top: 0px;
+    bottom: 0px;
+    width: 100%;
+    z-index: -2;
+}
 #total{
     width: 33.33%;
     font-size: 25px;
@@ -100,6 +107,13 @@ footer{
     font-family: American Typewriter;
     color: #000;
     background: #ffffff;
+}
+.mainInfo{
+    width: 100%;
+    padding-top: 10px;
+    text-align: center;
+    font-family: American Typewriter;
+    color: #000;
 }
 .menu{
     margin: 0px;

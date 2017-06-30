@@ -2,41 +2,38 @@
 <html>
     <head>
         <!-- the title of the page -->
-        <!-- only change if have better name -->
         <title>Checkbook</title>
         <!-- the link to the css -->
-        <!-- only change if change the name to the css file -->
         <link rel="stylesheet" href="checkbook.css">
     </head>
     <body onload="load()">
         <!-- header of the page -->
-        <!-- add what you think needs to be in the header -->
         <header>
             <!-- header name -->
-            <!-- change if have better name -->
             Checking Book
             <!-- line -->
             <hr>
+            <!-- menu -->
             <div class="menu">
+                <!-- links to different parts of the webpage -->
                 <a class="menuLinks" href="index.html">Home</a>
                 <a class="menuLinks" href="index.html">Stats</a>
                 <a class="menuLinks" href="index.html">Plan</a>
                 <a class="menuLinks" href="index.html">Calendar</a>
             </div>
         </header>
+        <!-- main section -->
+        <!-- will keep track of everything user inputed -->
+        <div id="main"></div>
         <!-- centers the pop ups -->
-        <!-- pop ups can be changed in here -->
         <div class="center"> 
             <!-- pop up -->
-            <!-- can change if have better idea -->
             <div id="popUp">
-                <!-- what it input -->
-                <!-- input the type of paying your doing -->
+                <!-- input -->
                 Payee 
                 <!-- input box -->
                 <input type="text" id="payee" value="Type Place Here"><br>
-                <!-- what it input -->
-                <!-- input what amount is being add or subtacted -->
+                <!-- input -->
                 Amount 
                 <!-- input box -->
                 <input type="text" id="amount" value="Type Number Here"><br>
@@ -47,7 +44,6 @@
             </div>
             <!-- wrong answer pop up -->
             <!-- displays what the user enter that was not right -->
-            <!-- change if pop up was change or if have a better idead -->
             <div id="wrongAnswer">
                 <!-- text -->
                 <!-- tells the user that they enter something wrong -->
@@ -60,21 +56,23 @@
             </div>
         </div>
         <!-- footer of the page -->
-        <!-- add what you think needs to be in the footer -->
-        <!-- this footer is not going to have lots of links it just going to have the total -->
         <footer>
             <!-- line -->
             <hr>
+            <!-- footer menu -->
             <div class="menu">
+                <!-- button -->
+                <!-- resets the total -->
                 <button class="menuButtons" onclick="reset()">Erase</button>
                 <!-- total -->
                 <!-- total will be figer out by javascript -->
-                <div id="total"></div>
+                <div id="total"></div><!-- button -->
+                <!-- button -->
+                <!-- chages the total by the number the user -->
                 <button class="menuButtons" onclick="add()">Add Transaction</button>
             </div>
         </footer>
         <!-- link to the javascript -->
-        <!-- only change if change the name to the javascrpt file -->
         <script src="checkbook.js"> </script>
     </body>
 </html>

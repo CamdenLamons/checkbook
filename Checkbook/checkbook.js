@@ -3,9 +3,10 @@ var totalMoney = 0.00;
 if(!localStorage.savedMoney){
     localStorage.setItem("savedMoney",0.00)
 }
-totalMoney = localStorage.savedMoney;
+totalMoney = Number(localStorage.savedMoney);
 
 // elements
+let mainElement = document.getElementById("main");
 let totalElement = document.getElementById("total");
 let popUpElement = document.getElementById("popUp");
 let payeeElement = document.getElementById("payee");
@@ -46,6 +47,7 @@ function submit(){
         totalMoney_Slice = String(totalMoney).slice(0,totalMoney_IndexOfDot+3);
         totalElement.innerHTML = "Total: $" + String(totalMoney_Slice);
         localStorage.savedMoney = totalMoney;
+        info();
     }
     else{
         cancel();
@@ -57,4 +59,13 @@ function submit(){
 // function hides the wrong answer pop up
 function ok(){
     wrongAnswerElement.style.display = 'none';
+}
+// function is called after the submit function
+// fucntion adds the users input to the sreen
+function info(){
+    var node = document.createElement("div");
+    var textnode = document.createTextNode("Info");
+    node.appendChild(textnode);
+    node.className = "mainInfo"
+    mainElement.appendChild(node);
 }
