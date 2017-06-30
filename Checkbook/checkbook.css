@@ -6,6 +6,8 @@
     2. ids
     3. classes
     4. states
+    
+    predefind tags, ids, classes, states are order alphabetical
 
     properties
     1. position
@@ -15,13 +17,22 @@
     5. padding
     6. z index
     7. border
-    8. display
-    9. font size, font align, font family, color
-    10. background color
+    8. overflow
+    9. display
+    10. font size, font align, font family, decoration, color
+    11. background color
 */
+/* pre defind tags */
 body{
     margin: 0px;
     padding: 0px;
+    background: #ffffff;
+}
+footer{
+    position: fixed;
+    bottom: 0px;
+    margin-top: 10px;
+    width: 100%;
     background: #ffffff;
 }
 header{
@@ -38,11 +49,13 @@ hr{
     border: none;
     background: #000000;
 }
-footer{
-    position: fixed;
-    bottom: 0px;
-    margin-top: 10px;
+/* ids */
+#amount{
     width: 100%;
+    border: none;
+    font-size: 20px;
+    text-align: center;
+    font-family: American Typewriter;
     background: #ffffff;
 }
 #main{
@@ -52,11 +65,13 @@ footer{
     overflow: visible;
     z-index: -2;
 }
-#total{
-    width: 33.33%;
-    font-size: 25px;
+#payee{
+    width: 100%;
+    border: none;
+    font-size: 20px;
     text-align: center;
     font-family: American Typewriter;
+    background: #ffffff;
 }
 #popUp{
     width: 40%;
@@ -70,21 +85,11 @@ footer{
     color: #000;
     background: #ffffff;
 }
-#payee{
-    width: 100%;
-    border: none;
-    font-size: 20px;
+#total{
+    width: 33.33%;
+    font-size: 25px;
     text-align: center;
     font-family: American Typewriter;
-    background: #ffffff;
-}
-#amount{
-    width: 100%;
-    border: none;
-    font-size: 20px;
-    text-align: center;
-    font-family: American Typewriter;
-    background: #ffffff;
 }
 #wrongAnswer{
     width: 40%;
@@ -109,6 +114,17 @@ footer{
     color: #000;
     background: #ffffff;
 }
+/* classes */
+.center{
+    position: fixed;
+    top: 0px;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 .mainInfo{
     width: 100%;
     padding-top: 10px;
@@ -125,8 +141,8 @@ footer{
     align-items: center;
     background: #ffffff;
 }
-.menuLinks{
-    width: 25%;
+.menuButtons{
+    width: 33.33%;
     border: none;
     border-radius: 5px;
     font-size: 17.5px;
@@ -136,8 +152,8 @@ footer{
     color: #000;
     background: #ffffff;
 }
-.menuButtons{
-    width: 33.33%;
+.menuLinks{
+    width: 25%;
     border: none;
     border-radius: 5px;
     font-size: 17.5px;
@@ -158,16 +174,7 @@ footer{
     color: #000;
     background: #ffffff;
 }
-.center{
-    position: fixed;
-    top: 0px;
-    width: 100%;
-    height: 100%;
-    z-index: -1;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
+/* states */
 .menuLinks:active, .menuButtons:active, .popUpButton:active, #wrongAnswerButton:active{
     font-size: 22.5px;
 }
