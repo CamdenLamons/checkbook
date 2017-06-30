@@ -47,9 +47,9 @@ footer{
 }
 #main{
     position: relative;
-    top: 0px;
-    bottom: 0px;
     width: 100%;
+    height: 0px;
+    overflow: visible;
     z-index: -2;
 }
 #total{
@@ -63,6 +63,7 @@ footer{
     padding: 10px;
     border: 2.5px solid black;
     border-radius: 10px;
+    z-index: 5;
     font-size: 25px;
     text-align: center;
     font-family: American Typewriter;
@@ -111,6 +112,7 @@ footer{
 .mainInfo{
     width: 100%;
     padding-top: 10px;
+    z-index: -2;
     text-align: center;
     font-family: American Typewriter;
     color: #000;
