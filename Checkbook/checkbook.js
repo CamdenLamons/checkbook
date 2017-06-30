@@ -37,7 +37,7 @@ function info(){
     var textnode = document.createTextNode("Info");
     node.appendChild(textnode);
     node.className = "mainInfo"
-    mainElement.appendChild(node);
+    mainElement.insertBefore(node, mainElement.childNodes[0])
 }
 
 // function is called when screen loads
