@@ -32,18 +32,22 @@ function cancel(){
 
 // this function is called after the submit function and in the load function
 // adds the users inputs to the screen
-function info(){
+function info(name){
     var node = document.createElement("div");
-    var textnode = document.createTextNode("Info");
-    node.appendChild(textnode);
     node.className = "mainInfo"
+    var textName = document.createElement("div");
+    textName.innerHTML = name;
+    textName.className = "mainName"
+    node.appendChild(textName);
     mainElement.insertBefore(node, mainElement.childNodes[0])
 }
 
 // function is called when screen loads
 // sets everything up
 function load(){
-    totalElement.innerHTML = "Total: $" + String(totalMoney);
+    var totalMoney_IndexOfDot = String(totalMoney).indexOf(".");
+    var totalMoney_Slice = String(totalMoney).slice(0,totalMoney_IndexOfDot+3);
+    totalElement.innerHTML = "Total: $" + String(totalMoney_Slice);
     popUpElement.style.display = 'none';
     wrongAnswerElement.style.display = 'none';
 }
@@ -58,8 +62,12 @@ function ok(){
 // resets everything
 function reset(){
     localStorage.savedMoney = 0.00;
-    totalMoney = 0.00
-    totalElement.innerHTML = "Total: $" + String(totalMoney)
+    totalMoney = 0.00;
+    totalElement.innerHTML = "Total: $" + String(totalMoney);
+    while(mainElement.hasChildNodes()){
+        mainElement.removeChild(mainElement.firstChild);
+    }
+    info("<br/><br/>")
 }
 
 // this function is called when click the submit button
@@ -68,11 +76,11 @@ function reset(){
 function submit(){
     if ( payeeElement.value != "" && payeeElement.value != "Type Place Here" && Number(amountElement.value)){
         totalMoney += Number(amountElement.value);
-        totalMoney_IndexOfDot = String(totalMoney).indexOf(".");
-        totalMoney_Slice = String(totalMoney).slice(0,totalMoney_IndexOfDot+3);
+        var totalMoney_IndexOfDot = String(totalMoney).indexOf(".");
+        var totalMoney_Slice = String(totalMoney).slice(0,totalMoney_IndexOfDot+3);
         totalElement.innerHTML = "Total: $" + String(totalMoney_Slice);
-        localStorage.savedMoney = totalMoney;
-        info();
+        localStorage.savedMoney = Number(totalMoney);
+        info(payeeElement.value);
     }
     else{
         cancel();
