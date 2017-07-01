@@ -1,12 +1,20 @@
 // varablies
+
 var totalMoney = 0.00;
 if(!localStorage.savedMoney){
-    localStorage.setItem("savedMoney",0.00)
+    localStorage.setItem("savedMoney",0.00);
 }
 totalMoney = Number(localStorage.savedMoney);
 
+var payeeName = "";
+if(!localStorage.savedPayeeName){
+    localStorage.setItem("savedPayeeName",payeeName);
+}
+payeeName = localStorage.savedPayeeName
+
 
 // elements
+
 let mainElement = document.getElementById("main");
 let totalElement = document.getElementById("total");
 let popUpElement = document.getElementById("popUp");
@@ -50,6 +58,13 @@ function load(){
     totalElement.innerHTML = "Total: $" + String(totalMoney_Slice);
     popUpElement.style.display = 'none';
     wrongAnswerElement.style.display = 'none';
+    if(payeeName.indexOf(".")){
+        var payeeName_Array = payeeName.split(".")
+        payeeName_Array.pop()
+        for(var i = 0; i < payeeName_Array.length; i++){
+            info(payeeName_Array[i])
+        }
+    }
 }
 
 // this function is called when the ok button is click
@@ -68,6 +83,8 @@ function reset(){
         mainElement.removeChild(mainElement.firstChild);
     }
     info("<br/><br/>")
+    payeeName = ""
+    localStorage.savedPayeeName = payeeName
 }
 
 // this function is called when click the submit button
@@ -81,6 +98,8 @@ function submit(){
         totalElement.innerHTML = "Total: $" + String(totalMoney_Slice);
         localStorage.savedMoney = Number(totalMoney);
         info(payeeElement.value);
+        payeeName += String(payeeElement.value) + "."
+        localStorage.savedPayeeName = payeeName
     }
     else{
         cancel();
