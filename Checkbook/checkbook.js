@@ -5,6 +5,10 @@ var date = "";
 if(!localStorage.savedDate){localStorage.setItem("savedDate",date);}
 date = localStorage.savedDate;
 
+var money = "";
+if(!localStorage.saveMoney){localStorage.setItem("saveMoney",money);}
+money = localStorage.saveMoney;
+
 var payeeName = "";
 if(!localStorage.savedPayeeName){localStorage.setItem("savedPayeeName",payeeName);}
 payeeName = localStorage.savedPayeeName;
@@ -42,7 +46,7 @@ function cancel(){
 
 // this function is called after the submit function and in the load function
 // adds the users inputs to the screen
-function info(name,date){
+function info(name,date,moneyInfo){
     // creates the node
     var node = document.createElement("div");
     node.className = "mainInfo"
@@ -50,8 +54,14 @@ function info(name,date){
     // creates the text name
     var textName = document.createElement("div");
     textName.innerHTML = name;
-    textName.className = "mainName"
+    textName.className = "mainName";
     node.appendChild(textName);
+
+    // creates the text money
+    var textMoney = document.createElement("div");
+    textMoney.innerHTML = moneyInfo;
+    textMoney.className = "mainMoney";
+    node.appendChild(textMoney);
 
     // creates the text date
     var textDate = document.createElement("div");
@@ -77,12 +87,14 @@ function load(){
 
     // creates the saved info
     if(payeeName.indexOf(".")){
-        var payeeName_Array = payeeName.split(".")
-        var date_Array = date.split(".")
-        date_Array.pop()
-        payeeName_Array.pop()
+        var date_Array = date.split(".");
+        var money_Array = money.split("|")
+        var payeeName_Array = payeeName.split(".");
+        date_Array.pop();
+        money_Array.pop()
+        payeeName_Array.pop();
         for(var i = 0; i < payeeName_Array.length; i++){
-            info(payeeName_Array[i],date_Array[i])
+            info(payeeName_Array[i],date_Array[i],money_Array[i])
         }
     }
 }
@@ -99,6 +111,8 @@ function reset(){
     // resets the saved variables
     date = "";
     localStorage.savedDate = date;
+    money = ""
+    localStorage.saveMoney = money;
     payeeName = "";
     localStorage.savedPayeeName = payeeName;
     totalMoney = 0.00;
@@ -133,19 +147,27 @@ function submit(){
         date += String(today) + ".";
         localStorage.savedDate = date;
 
+        // saves the money variable
+        money += String(amountElement.value) + "|";
+        localStorage.saveMoney = money;
+
         // saves the payee variable
         payeeName += String(payeeElement.value) + ".";
         localStorage.savedPayeeName = payeeName;
 
         // saves the money variable
         totalMoney += Number(amountElement.value);
-        var totalMoney_IndexOfDot = String(totalMoney).indexOf(".");
-        var totalMoney_Slice = String(totalMoney).slice(0,totalMoney_IndexOfDot+3);
+        var totalMoney_IndexOfDot;
+        var totalMoney_Slice;
+        if(String(totalMoney).indexOf(".")){
+            totalMoney_IndexOfDot = String(totalMoney).indexOf(".");
+            totalMoney_Slice = String(totalMoney).slice(0,totalMoney_IndexOfDot+3);
+        }
         totalElement.innerHTML = "Total: $" + String(totalMoney_Slice);
-        localStorage.savedMoney = Number(totalMoney);
+        localStorage.savedMoney = Number(totalMoney_Slice);
 
         // creates the info
-        info(payeeElement.value,today);
+        info(payeeElement.value,today,amountElement.value);
     }
     // runs if info enter is wrong
     else{

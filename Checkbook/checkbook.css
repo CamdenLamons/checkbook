@@ -14,13 +14,14 @@
     2. top, bottom, left, right
     3. margin
     4. width, height
-    5. padding
-    6. z index
-    7. border
-    8. overflow
-    9. display
-    10. font size, font align, font family, decoration, color
-    11. background color
+    5. float
+    6. padding
+    7. z index
+    8. border
+    9. overflow
+    10. display
+    11. font size, font align, font family, decoration, color
+    12. background color
 */
 /* pre defind tags */
 body{
@@ -126,6 +127,13 @@ hr{
     justify-content: center;
     align-items: center;
 }
+.mainDate{
+    width: 25%;
+    font-size: 17.5px;
+    text-align: center;
+    font-family: American Typewriter;
+    color: #666;
+}
 .mainInfo{
     margin-top: 10px;
     width: 100%;
@@ -134,19 +142,23 @@ hr{
     font-family: American Typewriter;
     color: #000;
 }
-.mainName{
+.mainMoney{
     width: 25%;
-    font-size: 25px;
+    float: right;
+    display: inline;
+    font-size: 30px;
     text-align: center;
     font-family: American Typewriter;
     color: #000;
 }
-.mainDate{
+.mainName{
     width: 25%;
-    font-size: 17.5px;
+    float: left;
+    display: inline;
+    font-size: 25px;
     text-align: center;
     font-family: American Typewriter;
-    color: #666;
+    color: #000;
 }
 .menu{
     margin: 0px;
