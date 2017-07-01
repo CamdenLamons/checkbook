@@ -141,6 +141,13 @@ hr{
     font-family: American Typewriter;
     color: #000;
 }
+.mainDate{
+    width: 25%;
+    font-size: 17.5px;
+    text-align: center;
+    font-family: American Typewriter;
+    color: #666;
+}
 .menu{
     margin: 0px;
     width: 100%;

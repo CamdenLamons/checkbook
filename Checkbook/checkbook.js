@@ -10,7 +10,13 @@ var payeeName = "";
 if(!localStorage.savedPayeeName){
     localStorage.setItem("savedPayeeName",payeeName);
 }
-payeeName = localStorage.savedPayeeName
+payeeName = localStorage.savedPayeeName;
+
+var date = "";
+if(!localStorage.savedDate){
+    localStorage.setItem("savedDate",date);
+}
+date = localStorage.savedDate;
 
 
 // elements
@@ -40,13 +46,17 @@ function cancel(){
 
 // this function is called after the submit function and in the load function
 // adds the users inputs to the screen
-function info(name){
+function info(name,date){
     var node = document.createElement("div");
     node.className = "mainInfo"
     var textName = document.createElement("div");
     textName.innerHTML = name;
     textName.className = "mainName"
     node.appendChild(textName);
+    var textDate = document.createElement("div");
+    textDate.innerHTML = date;
+    textDate.className = "mainDate";
+    node.appendChild(textDate);
     mainElement.insertBefore(node, mainElement.childNodes[0])
 }
 
@@ -60,9 +70,11 @@ function load(){
     wrongAnswerElement.style.display = 'none';
     if(payeeName.indexOf(".")){
         var payeeName_Array = payeeName.split(".")
+        var date_Array = date.split(".")
+        date_Array.pop()
         payeeName_Array.pop()
         for(var i = 0; i < payeeName_Array.length; i++){
-            info(payeeName_Array[i])
+            info(payeeName_Array[i],date_Array[i])
         }
     }
 }
@@ -82,9 +94,12 @@ function reset(){
     while(mainElement.hasChildNodes()){
         mainElement.removeChild(mainElement.firstChild);
     }
-    info("<br/><br/>")
-    payeeName = ""
-    localStorage.savedPayeeName = payeeName
+    info("<br/><br/>");
+    mainElement.removeChild(mainElement.firstChild);
+    payeeName = "";
+    localStorage.savedPayeeName = payeeName;
+    date = "";
+    localStorage.savedDate = date;
 }
 
 // this function is called when click the submit button
@@ -97,9 +112,16 @@ function submit(){
         var totalMoney_Slice = String(totalMoney).slice(0,totalMoney_IndexOfDot+3);
         totalElement.innerHTML = "Total: $" + String(totalMoney_Slice);
         localStorage.savedMoney = Number(totalMoney);
-        info(payeeElement.value);
-        payeeName += String(payeeElement.value) + "."
-        localStorage.savedPayeeName = payeeName
+        var today = new Date();
+        var dd = today.getDate();
+        var mm = today.getMonth()+1;
+        var yyyy = today.getFullYear();
+        today = mm + "/" + dd + "/" + yyyy;
+        info(payeeElement.value,today);
+        date += String(today) + ".";
+        localStorage.savedDate = date;
+        payeeName += String(payeeElement.value) + ".";
+        localStorage.savedPayeeName = payeeName;
     }
     else{
         cancel();
