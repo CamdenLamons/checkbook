@@ -157,11 +157,13 @@ function submit(){
 
         // saves the money variable
         totalMoney += Number(amountElement.value);
-        var totalMoney_IndexOfDot;
-        var totalMoney_Slice;
-        if(String(totalMoney).indexOf(".")){
-            totalMoney_IndexOfDot = String(totalMoney).indexOf(".");
+        var totalMoney_IndexOfDot = String(totalMoney).indexOf(".");
+        var totalMoney_Slice
+        if (totalMoney_IndexOfDot >= 2){
             totalMoney_Slice = String(totalMoney).slice(0,totalMoney_IndexOfDot+3);
+        }
+        else{
+            totalMoney_Slice = totalMoney;
         }
         totalElement.innerHTML = "Total: $" + String(totalMoney_Slice);
         localStorage.savedMoney = Number(totalMoney_Slice);
