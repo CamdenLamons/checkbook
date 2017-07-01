@@ -1,31 +1,27 @@
 // varablies
-
-var totalMoney = 0.00;
-if(!localStorage.savedMoney){
-    localStorage.setItem("savedMoney",0.00);
-}
-totalMoney = Number(localStorage.savedMoney);
-
-var payeeName = "";
-if(!localStorage.savedPayeeName){
-    localStorage.setItem("savedPayeeName",payeeName);
-}
-payeeName = localStorage.savedPayeeName;
+// order alphabetical
 
 var date = "";
-if(!localStorage.savedDate){
-    localStorage.setItem("savedDate",date);
-}
+if(!localStorage.savedDate){localStorage.setItem("savedDate",date);}
 date = localStorage.savedDate;
+
+var payeeName = "";
+if(!localStorage.savedPayeeName){localStorage.setItem("savedPayeeName",payeeName);}
+payeeName = localStorage.savedPayeeName;
+
+var totalMoney = 0.00;
+if(!localStorage.savedMoney){localStorage.setItem("savedMoney",0.00);}
+totalMoney = Number(localStorage.savedMoney);
 
 
 // elements
+// order alphabetical
 
-let mainElement = document.getElementById("main");
-let totalElement = document.getElementById("total");
-let popUpElement = document.getElementById("popUp");
-let payeeElement = document.getElementById("payee");
 let amountElement = document.getElementById("amount");
+let mainElement = document.getElementById("main");
+let payeeElement = document.getElementById("payee");
+let popUpElement = document.getElementById("popUp");
+let totalElement = document.getElementById("total");
 let wrongAnswerElement = document.getElementById("wrongAnswer");
 
 
@@ -47,27 +43,39 @@ function cancel(){
 // this function is called after the submit function and in the load function
 // adds the users inputs to the screen
 function info(name,date){
+    // creates the node
     var node = document.createElement("div");
     node.className = "mainInfo"
+
+    // creates the text name
     var textName = document.createElement("div");
     textName.innerHTML = name;
     textName.className = "mainName"
     node.appendChild(textName);
+
+    // creates the text date
     var textDate = document.createElement("div");
     textDate.innerHTML = date;
     textDate.className = "mainDate";
     node.appendChild(textDate);
+
+    // adds the node to the mainElement
     mainElement.insertBefore(node, mainElement.childNodes[0])
 }
 
 // function is called when screen loads
 // sets everything up
 function load(){
+    // displays the saved total
     var totalMoney_IndexOfDot = String(totalMoney).indexOf(".");
     var totalMoney_Slice = String(totalMoney).slice(0,totalMoney_IndexOfDot+3);
     totalElement.innerHTML = "Total: $" + String(totalMoney_Slice);
+
+    // hides the pop ups
     popUpElement.style.display = 'none';
     wrongAnswerElement.style.display = 'none';
+
+    // creates the saved info
     if(payeeName.indexOf(".")){
         var payeeName_Array = payeeName.split(".")
         var date_Array = date.split(".")
@@ -88,44 +96,64 @@ function ok(){
 // this function is called when clicked on the erace button
 // resets everything
 function reset(){
-    localStorage.savedMoney = 0.00;
+    // resets the saved variables
+    date = "";
+    localStorage.savedDate = date;
+    payeeName = "";
+    localStorage.savedPayeeName = payeeName;
     totalMoney = 0.00;
+    localStorage.savedMoney = totalMoney;
+    payeeName = "";
+    
+    // resets the totalElement text
     totalElement.innerHTML = "Total: $" + String(totalMoney);
+
+    // gets ride of the displayed info
     while(mainElement.hasChildNodes()){
         mainElement.removeChild(mainElement.firstChild);
     }
     info("<br/><br/>");
     mainElement.removeChild(mainElement.firstChild);
-    payeeName = "";
-    localStorage.savedPayeeName = payeeName;
-    date = "";
-    localStorage.savedDate = date;
 }
 
 // this function is called when click the submit button
 // checks to make sure the user enter the right stuff then desplays how much money they have
 // if did not enter right stuff display wrong answer
 function submit(){
+    // runs if info enter is right
     if ( payeeElement.value != "" && payeeElement.value != "Type Place Here" && Number(amountElement.value)){
-        totalMoney += Number(amountElement.value);
-        var totalMoney_IndexOfDot = String(totalMoney).indexOf(".");
-        var totalMoney_Slice = String(totalMoney).slice(0,totalMoney_IndexOfDot+3);
-        totalElement.innerHTML = "Total: $" + String(totalMoney_Slice);
-        localStorage.savedMoney = Number(totalMoney);
+        // creates the date
         var today = new Date();
         var dd = today.getDate();
         var mm = today.getMonth()+1;
         var yyyy = today.getFullYear();
         today = mm + "/" + dd + "/" + yyyy;
-        info(payeeElement.value,today);
+
+        // saves the date variable
         date += String(today) + ".";
         localStorage.savedDate = date;
+
+        // saves the payee variable
         payeeName += String(payeeElement.value) + ".";
         localStorage.savedPayeeName = payeeName;
+
+        // saves the money variable
+        totalMoney += Number(amountElement.value);
+        var totalMoney_IndexOfDot = String(totalMoney).indexOf(".");
+        var totalMoney_Slice = String(totalMoney).slice(0,totalMoney_IndexOfDot+3);
+        totalElement.innerHTML = "Total: $" + String(totalMoney_Slice);
+        localStorage.savedMoney = Number(totalMoney);
+
+        // creates the info
+        info(payeeElement.value,today);
     }
+    // runs if info enter is wrong
     else{
+        // hides the pop up
         cancel();
+        // displays the wrond answer pop up
         wrongAnswerElement.style.display = 'block';
     }
+    // hides the pop up
     cancel();
 }
