@@ -62,12 +62,20 @@ function load(){
     var moneySub = 0
     for(var howMuch = 0; howMuch < money_Array.length; howMuch++){
         if(money_Array[howMuch]>0){
-            moneyAdded += Number(money[howMuch]);
+            moneyAdded += Number(money_Array[howMuch]);
         }
         else{
             moneySub += Number(money_Array[howMuch]);
+            var totalMoney_IndexOfDot = String(moneySub).indexOf(".");
+            var totalMoney_Slice
+            if (totalMoney_IndexOfDot >= 2){
+                totalMoney_Slice = String(moneySub).slice(0,totalMoney_IndexOfDot+3);
+            }
+            else{
+                totalMoney_Slice = moneySub;
+            }
         }
     }
     info("Money Earned",String(moneyAdded));
-    info("Money Spent",String(moneySub))
+    info("Money Spent",totalMoney_Slice)
 }
