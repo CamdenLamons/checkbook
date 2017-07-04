@@ -1,6 +1,10 @@
 // varablies
 // order alphabetical
 
+var date = "";
+if(!localStorage.savedDate){localStorage.setItem("savedDate",date);}
+date = localStorage.savedDate;
+
 var money = "";
 if(!localStorage.saveMoney){localStorage.setItem("saveMoney",money);}
 money = localStorage.saveMoney;
@@ -54,16 +58,25 @@ function load(){
     var totalMoney_Slice = String(totalMoney).slice(0,totalMoney_IndexOfDot+3);
     totalElement.innerHTML = "Total: $" + String(totalMoney_Slice);
 
+    // displays all the stats
+    // variables for the stats
+    // order alphabetical
+    
     var money_Array = money.split("|");
-    var payeeName_Array = payeeName.split(".");
     money_Array.pop();
+    var payeeName_Array = payeeName.split(".");
     payeeName_Array.pop();
     var moneyAdded = 0;
-    var moneySub = 0
+    var moneySub = 0;
+    var mostMoneyOnceS = 0;
+    var mostMoneyOnceE = 0;
+    var mostMoneySpentOn = "";
     for(var howMuch = 0; howMuch < money_Array.length; howMuch++){
+        // total money earned
         if(money_Array[howMuch]>0){
             moneyAdded += Number(money_Array[howMuch]);
         }
+        // total money spent
         else{
             moneySub += Number(money_Array[howMuch]);
             var totalMoney_IndexOfDot = String(moneySub).indexOf(".");
@@ -75,7 +88,22 @@ function load(){
                 totalMoney_Slice = moneySub;
             }
         }
+        // most money spent at once
+        if(Number(money_Array[howMuch]) < mostMoneyOnceS){
+            mostMoneyOnceS = money_Array[howMuch];
+            // what most money is spent on
+            mostMoneySpentOn = payeeName_Array[howMuch];
+        }
+        // most money spent at once
+        if(Number(money_Array[howMuch]) > mostMoneyOnceE){
+            mostMoneyOnceE = money_Array[howMuch];
+        }
     }
-    info("Money Earned",String(moneyAdded));
-    info("Money Spent",totalMoney_Slice)
+    info("Total Money Earned",String(moneyAdded));
+    info("Total Money Spent",totalMoney_Slice);
+    info("Most Money Spent At Once",String(mostMoneyOnceS));
+    info("Most Money Earned At Once",String(mostMoneyOnceE));
+    info("Most Money Spent In A Day","0");
+    info("Most Money Earned In A Day","0");
+    info("What Most Money Is Spent On",mostMoneySpentOn);
 }
