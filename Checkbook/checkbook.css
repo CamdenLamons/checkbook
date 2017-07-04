@@ -215,20 +215,15 @@ hr{
     color: #000;
 }
 .sMainMoney{
-    margin-top: 25px;
+    margin-left: 50%;
     width: 50%;
-    float: right;
-    display: inline;
     font-size: 30px;
     text-align: center;
     font-family: American Typewriter;
     color: #000;
 }
 .sMainName{
-    margin-top: 25px;
     width: 50%;
-    float: left;
-    display: inline;
     font-size: 25px;
     text-align: center;
     font-family: American Typewriter;

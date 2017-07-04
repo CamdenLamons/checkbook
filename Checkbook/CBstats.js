@@ -1,10 +1,6 @@
 // varablies
 // order alphabetical
 
-var date = "";
-if(!localStorage.savedDate){localStorage.setItem("savedDate",date);}
-date = localStorage.savedDate;
-
 var money = "";
 if(!localStorage.saveMoney){localStorage.setItem("saveMoney",money);}
 money = localStorage.saveMoney;
@@ -103,7 +99,5 @@ function load(){
     info("Total Money Spent",totalMoney_Slice);
     info("Most Money Spent At Once",String(mostMoneyOnceS));
     info("Most Money Earned At Once",String(mostMoneyOnceE));
-    info("Most Money Spent In A Day","0");
-    info("Most Money Earned In A Day","0");
     info("What Most Money Is Spent On",mostMoneySpentOn);
 }
