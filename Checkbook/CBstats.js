@@ -58,15 +58,18 @@ function load(){
     // variables for the stats
     // order alphabetical
     
+    var moneyAdded = 0;
     var money_Array = money.split("|");
     money_Array.pop();
+    var moneySub = 0;
+    var mostMoneyOnceE = 0;
+    var mostMoneyOnceS = 0;
+    var mostMoneySpentOn = "";
+    var mostMoneySpentOnOne = "";
     var payeeName_Array = payeeName.split(".");
     payeeName_Array.pop();
-    var moneyAdded = 0;
-    var moneySub = 0;
-    var mostMoneyOnceS = 0;
-    var mostMoneyOnceE = 0;
-    var mostMoneySpentOn = "";
+    var totalCost = 0;
+
     for(var howMuch = 0; howMuch < money_Array.length; howMuch++){
         // total money earned
         if(money_Array[howMuch]>0){
@@ -88,16 +91,38 @@ function load(){
         if(Number(money_Array[howMuch]) < mostMoneyOnceS){
             mostMoneyOnceS = money_Array[howMuch];
             // what most money is spent on
-            mostMoneySpentOn = payeeName_Array[howMuch];
+            mostMoneySpentOnOne = payeeName_Array[howMuch];
         }
         // most money spent at once
         if(Number(money_Array[howMuch]) > mostMoneyOnceE){
             mostMoneyOnceE = money_Array[howMuch];
         }
     }
-    info("Total Money Earned",String(moneyAdded));
-    info("Total Money Spent",totalMoney_Slice);
-    info("Most Money Spent At Once",String(mostMoneyOnceS));
-    info("Most Money Earned At Once",String(mostMoneyOnceE));
-    info("What Most Money Is Spent On",mostMoneySpentOn);
+    mostMoneySpentOn = mostMoneySpentOnOne;
+    // Most Money Spent On
+    for(var a = 0; a < payeeName_Array.length; a++){
+        var cost = 0;
+        for (var b = 0; b < payeeName_Array.length; b++){
+            if(a != b){
+                if(payeeName_Array[a] == payeeName_Array[b]){
+                    if(money_Array[a] < 0){
+                        cost += Number(money_Array[b]);
+                    }
+                }
+            }
+        }
+        cost += Number(money_Array[a]);
+        if(cost < mostMoneyOnceS && cost < totalCost){
+            mostMoneySpentOn = payeeName_Array[a];
+            totalCost = cost;
+        }
+    }
+
+    // put the info on the screen
+    info("Most Money Earned At Once:",String(mostMoneyOnceE));
+    info("Most Money Spent At Once:",String(mostMoneyOnceS));
+    info("Total Money Earned:",String(moneyAdded));
+    info("Total Money Spent:",totalMoney_Slice);
+    info("Most Money Spent On One Item:",mostMoneySpentOnOne);
+    info("Most Money Spent On",String(mostMoneySpentOn));
 }
