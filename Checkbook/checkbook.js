@@ -1,6 +1,8 @@
 // varablies
 // order alphabetical
 
+var edit = 0;
+
 var date = "";
 if(!localStorage.savedDate){localStorage.setItem("savedDate",date);}
 date = localStorage.savedDate;
@@ -97,6 +99,12 @@ function load(){
             info(payeeName_Array[i],date_Array[i],money_Array[i])
         }
     }
+
+    for(var main = 0; main < mainElement.childNodes.length; main++){
+        mainElement.childNodes[main].onclick = function(){
+            this.parentNode.removeChild(this);
+        }
+    }
 }
 
 // this function is called when the ok button is click
@@ -108,6 +116,7 @@ function ok(){
 // this function is called when clicked on the erace button
 // resets everything
 function reset(){
+    /*
     // resets the saved variables
     date = "";
     localStorage.savedDate = date;
@@ -128,6 +137,19 @@ function reset(){
     }
     info("<br/><br/>");
     mainElement.removeChild(mainElement.firstChild);
+    */ 
+    if(edit == 0){
+        edit = 1;
+        mainElement.style.height = 100 + "%";
+        mainElement.style.overflow = "hidden";
+        mainElement.style.zIndex = 5;
+    }
+    else if(edit == 1){
+        edit = 0;
+        mainElement.style.height = 0 + "px";
+        mainElement.style.overflow = "visible";
+        mainElement.style.zIndex = -2;
+    }
 }
 
 // this function is called when click the submit button
